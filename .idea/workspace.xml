@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34abfa5f-6035-41ec-88ab-d2362eb588e7" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/MainComponent/MainComponent.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/MainComponent/MainComponent.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change beforePath="$PROJECT_DIR$/src/Components/InputComponent/InputComponent.js" afterPath="$PROJECT_DIR$/src/Components/InputComponent/InputComponent.js" />
-      <change beforePath="$PROJECT_DIR$/src/Components/InputComponent/InputComponentCSS.css" afterPath="$PROJECT_DIR$/src/Components/InputComponent/InputComponentCSS.css" />
+      <change beforePath="$PROJECT_DIR$/src/Components/MainComponent/MainComponent.js" afterPath="$PROJECT_DIR$/src/Components/MainComponent/MainComponent.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,8 +20,8 @@
       <file leaf-file-name="MainComponent.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Components/MainComponent/MainComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="32" column="45" lean-forward="false" selection-start-line="32" selection-start-column="45" selection-end-line="32" selection-end-column="45" />
+            <state relative-caret-position="242">
+              <caret line="26" column="51" lean-forward="true" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -184,12 +180,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1515691366896</updated>
-      <workItem from="1515691368242" duration="17442000" />
+      <workItem from="1515691368242" duration="18046000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17442000" />
+    <option name="totallyTimeSpent" value="18046000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -338,8 +334,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/MainComponent/MainComponent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="32" column="45" lean-forward="false" selection-start-line="32" selection-start-column="45" selection-end-line="32" selection-end-column="45" />
+        <state relative-caret-position="242">
+          <caret line="26" column="51" lean-forward="true" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

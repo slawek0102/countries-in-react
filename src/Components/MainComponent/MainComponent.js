@@ -22,11 +22,11 @@ export class MainComponent extends Component {
             axios.get(country)
                 .then(function (response) {
                     let {data: chosenCountry} = response;
-                    // let newCountries = this.state.countries.concat(response.data);
+                    // let newCountries = this.state.countries.concat(chosenCountry);
 
                     //NIE ROZUMIEM CZEMY PONIZSZY KOD NIE DZIALA ????
                     // this.setState({
-                    //     countries: []
+                    //     countries: newCountry
                     // }, function () {
                     //     console.log(this.state)
                     // });
