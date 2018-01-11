@@ -21,17 +21,17 @@ export class MainComponent extends Component {
         if (event.target.value.length >= 2) {
             axios.get(country)
                 .then(function (response) {
-                    let {data: chosenCountry} = response;
-                    // let newCountries = this.state.countries.concat(chosenCountry);
+                    let {data: chosenCountries} = response;
+                    // let newCountries = this.state.countries.concat(chosenCountries);
 
                     //NIE ROZUMIEM CZEMY PONIZSZY KOD NIE DZIALA ????
                     // this.setState({
-                    //     countries: newCountry
+                    //     countries: newCountries
                     // }, function () {
                     //     console.log(this.state)
                     // });
 
-                    console.log(chosenCountry)
+                    console.log(chosenCountries)
 
                 })
                 .catch(function (error) {
