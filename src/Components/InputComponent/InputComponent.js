@@ -1,8 +1,19 @@
-
-import React from 'react';
+import React, {Component} from 'react';
 
 import './InputComponentCSS.css';
 
-export const InputComponent = (props) => (
-    <div>InputComponent</div>
-);
+export class InputComponent extends Component {
+    constructor() {
+        super();
+        this.state = {}
+    }
+
+    render() {
+        return (
+            <div>InputComponent Hej</div>
+        );
+    }
+}
+
+
+
