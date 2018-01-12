@@ -7,6 +7,7 @@ import axios from 'axios';
 import './MainComponent.css'
 import {InputComponent} from '../InputComponent/InputComponent'
 import {CountryComponent} from "../CountryComponent/CountryComponent";
+import {CountryDetailsComponent} from "../CountryDetailsComponent/CountryDetailsComponent";
 
 
 export class MainComponent extends Component {
@@ -47,15 +48,12 @@ export class MainComponent extends Component {
     render() {
         return (
             <div>
-
                 <InputComponent changeCountryHandler={this.changeCountryHandler}/>
-
                 {this.state.countries.map((country)=>{
-                    return <CountryComponent country = {country}/>
+                    return <CountryComponent country = {country} key={country.alpha3Code}/>
                 })}
 
-
-
+                {this.state.countries.length===1 ? <CountryDetailsComponent country={this.state.countries[0]} /> : null}
 
             </div>
         );
