@@ -1,0 +1,7 @@
+.country {
+    width: 30%;
+    height: 20px;
+    padding: 6px 10px;
+    border: 2px solid darkgray;
+    margin: 5px;
+}

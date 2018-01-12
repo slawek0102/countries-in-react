@@ -3,7 +3,7 @@ import React from 'react';
 import './CountryComponent.css';
 
 export const CountryComponent = (props) => (
-    <div>
+    <div className='country'>
         {props.country.name}
     </div>
 );
