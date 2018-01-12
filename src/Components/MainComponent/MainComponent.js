@@ -1,8 +1,12 @@
+// https://wecodetheweb.com/2016/02/12/immutable-javascript-using-es6-and-beyond/
+
+
 import React, {Component} from 'react';
 import axios from 'axios';
 
 import './MainComponent.css'
 import {InputComponent} from '../InputComponent/InputComponent'
+import {CountryComponent} from "../CountryComponent/CountryComponent";
 
 
 export class MainComponent extends Component {
@@ -10,26 +14,24 @@ export class MainComponent extends Component {
         super(props)
         this.changeCountryHandler = this.changeCountryHandler.bind(this);
         this.state = {
-            countries: ['Poland']
+            countries: []
         }
     }
 
 
     changeCountryHandler = (event) => {
 
-
-
         let country = 'https://restcountries.eu/rest/v2/name/' + event.target.value;
 
-        if (event.target.value.length >= 2) {
-
+        if (event.target.value.length >= 0) {
             axios.get(country)
                 .then(function (response) {
                     let {data: chosenCountries} = response;
                     return chosenCountries
-                }).then((chosenCountries)=>{
-                let newCountries = this.state.countries.concat(chosenCountries);
-
+                }).then((chosenCountries) => {
+                    //Czy aby na pewno musze tworzyc nowy obiekt? Nie wystarczy setState((countries: chosenCountries)}?
+                    let newCountries = [...this.state.countries];
+                        newCountries = chosenCountries;
                 this.setState({
                     countries: newCountries
                 }, function () {
@@ -45,8 +47,16 @@ export class MainComponent extends Component {
     render() {
         return (
             <div>
+
                 <InputComponent changeCountryHandler={this.changeCountryHandler}/>
-                <div>Wpisz np Poland, Germany, etc...</div>
+
+                {this.state.countries.map((country)=>{
+                    return <CountryComponent country = {country}/>
+                })}
+
+
+
+
             </div>
         );
     }
