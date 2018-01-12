@@ -10,35 +10,37 @@ export class MainComponent extends Component {
         super(props)
         this.changeCountryHandler = this.changeCountryHandler.bind(this);
         this.state = {
-            countries: []
+            countries: ['Poland']
         }
     }
 
 
     changeCountryHandler = (event) => {
+
+
+
         let country = 'https://restcountries.eu/rest/v2/name/' + event.target.value;
 
         if (event.target.value.length >= 2) {
+
             axios.get(country)
                 .then(function (response) {
                     let {data: chosenCountries} = response;
-                    // let newCountries = this.state.countries.concat(chosenCountries);
+                    return chosenCountries
+                }).then((chosenCountries)=>{
+                let newCountries = this.state.countries.concat(chosenCountries);
 
-                    //NIE ROZUMIEM CZEMY PONIZSZY KOD NIE DZIALA ????
-                    // this.setState({
-                    //     countries: newCountries
-                    // }, function () {
-                    //     console.log(this.state)
-                    // });
-
-                    console.log(chosenCountries)
-
-                })
+                this.setState({
+                    countries: newCountries
+                }, function () {
+                    console.log(this.state)
+                });
+            })
                 .catch(function (error) {
                     console.log(error);
                 });
         }
-    }
+    };
 
     render() {
         return (
