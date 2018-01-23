@@ -6,18 +6,20 @@ import './MainComponent.css'
 
 import {CountryDetailsComponent} from "../CountryDetailsComponent/CountryDetailsComponent";
 import {CountrySelectComponent} from '../CountrySelectComponent/CountrySelectComponent'
+import {CountryBordersComponent} from '../CountryBordersComponent/CountryBordersComponent'
 
 export class MainComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
             allCountries: [],
-            name: 'NameJajo',
-            capital: 'CapitalJano',
-            alpha3Code: 'Alpha3Jajo',
+            name: '',
+            capital: '',
+            alpha3Code: '',
             borders: []
         }
     }
+
     componentDidMount = () => {
         axios.get("https://restcountries.eu/rest/v2/all")
         // axios.get("http://localhost:3001/rest/country/all")
@@ -32,17 +34,44 @@ export class MainComponent extends Component {
 
     changedSelectOption = (e) => {
         const temp_alpha3Code = e.target.value;
-
         const countryDetails = this.findCountryDetails(temp_alpha3Code);
 
-        this.setState(() => {
-            return {alpha3Code: temp_alpha3Code};
-        });
+        // this.setState(() => {
+        //     return {alpha3Code: temp_alpha3Code};
+        // });
     };
 
-    findCountryDetails = (alpha3Code)=>{
-        console.log('FindCountryDetails',alpha3Code);
+    findCountryDetails = (alpha3Code) => {
+        const allCountries = this.state.allCountries;
+        let name = '';
+        let capital = '';
+        let alpha3CodeBorders = [];
+        let longNameBorders = [];
 
+        allCountries.map((country) => {
+            if (country.alpha3Code === alpha3Code) {
+                name = country.name;
+                alpha3CodeBorders = country.borders;
+                capital = country.capital;
+            }
+        });
+
+        alpha3CodeBorders.forEach((alpha3CodeBorder) => {
+            allCountries.map((country) => {
+                if (country.alpha3Code === alpha3CodeBorder) {
+                    longNameBorders.push(country.name)
+                }
+            })
+        })
+
+        this.setState(() => {
+            return {
+                alpha3Code: alpha3Code,
+                name: name,
+                capital: capital,
+                borders: longNameBorders
+            };
+        });
     };
 
 
@@ -52,6 +81,13 @@ export class MainComponent extends Component {
             <div>
                 <CountrySelectComponent countries={allCountries} changedSelectOption={this.changedSelectOption}/>
                 <CountryDetailsComponent details={this.state}/>
+                {this.state.borders.map((border)=>{
+                    return (
+                        <div>
+                            <CountryBordersComponent border = {border}/>
+                        </div>
+                    )
+                })}
             </div>
         );
     }
