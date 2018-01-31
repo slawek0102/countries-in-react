@@ -8,7 +8,7 @@ import {CountrySelectComponent} from '../CountrySelectComponent/CountrySelectCom
 import {CountryBordersComponent} from '../CountryBordersComponent/CountryBordersComponent'
 import {getDataFromAPI} from '../../utils/getDataFromAPI'
 
-import {allCountriesHTTPAddress} from '../../ApplicationConstants/ApplicationConstants'
+import {allCountriesHTTPAddress} from 'ApplicationConstants';
 
 
 export class MainComponent extends Component {
@@ -48,7 +48,7 @@ export class MainComponent extends Component {
 
         //Dane dot. wybranego Kraju
         const selectedCountry = allCountries.find(country => country.alpha3Code === alpha3Code);
-
+        console.log(selectedCountry)
 
         // .filter
         // alpha3CodeBorders.forEach((alpha3CodeBorder) => {
@@ -59,11 +59,9 @@ export class MainComponent extends Component {
         //     })
         // });
 
-        let borders = [];
-        borders = allCountries.filter((country)=>{
-
-            return country.name ===
-        });
+        const borders = allCountries.filter((country) =>
+            selectedCountry.borders.find(border => border === country.alpha3Code)
+        );
 
              console.log('Moje granice', borders);
 
