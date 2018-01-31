@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import Button from 'material-ui/Button';
 
 import './MainComponent.css'
-
 
 import {CountryDetailsComponent} from "../CountryDetailsComponent/CountryDetailsComponent";
 import {CountrySelectComponent} from '../CountrySelectComponent/CountrySelectComponent'
 import {CountryBordersComponent} from '../CountryBordersComponent/CountryBordersComponent'
+import {getDataFromAPI} from '../../utils/getDataFromAPI'
+
+import {allCountriesHTTPAddress} from '../../ApplicationConstants/ApplicationConstants'
+
 
 export class MainComponent extends Component {
     constructor(props) {
@@ -21,55 +24,56 @@ export class MainComponent extends Component {
     }
 
     componentDidMount = () => {
-        axios.get("https://restcountries.eu/rest/v2/all")
-        // axios.get("http://localhost:3001/rest/country/all")
-            .then((response) => {
-                this.setState({
-                    allCountries: response.data
-                })
-            }).catch((error) => {
-            console.error(error)
+        getDataFromAPI(allCountriesHTTPAddress).then((data) => {
+            this.setState({allCountries: data})
         })
     };
 
+
     changedSelectOption = (e) => {
+        e.preventDefault();
         const temp_alpha3Code = e.target.value;
         const countryDetails = this.findCountryDetails(temp_alpha3Code);
 
-        // this.setState(() => {
-        //     return {alpha3Code: temp_alpha3Code};
-        // });
+
     };
+
 
     findCountryDetails = (alpha3Code) => {
         const allCountries = this.state.allCountries;
-        let name = '';
-        let capital = '';
-        let alpha3CodeBorders = [];
-        let longNameBorders = [];
+        // let name = '';
+        // let capital = '';
+        // let alpha3CodeBorders = [];
+        // let longNameBorders = [];
 
-        allCountries.map((country) => {
-            if (country.alpha3Code === alpha3Code) {
-                name = country.name;
-                alpha3CodeBorders = country.borders;
-                capital = country.capital;
-            }
+        //Dane dot. wybranego Kraju
+        const selectedCountry = allCountries.find(country => country.alpha3Code === alpha3Code);
+
+
+        // .filter
+        // alpha3CodeBorders.forEach((alpha3CodeBorder) => {
+        //     allCountries.map((country) => {
+        //         if (country.alpha3Code === alpha3CodeBorder) {
+        //             longNameBorders.push(country.name)
+        //         }
+        //     })
+        // });
+
+        let borders = [];
+        borders = allCountries.filter((country)=>{
+
+            return country.name ===
         });
 
-        alpha3CodeBorders.forEach((alpha3CodeBorder) => {
-            allCountries.map((country) => {
-                if (country.alpha3Code === alpha3CodeBorder) {
-                    longNameBorders.push(country.name)
-                }
-            })
-        })
+             console.log('Moje granice', borders);
+
 
         this.setState(() => {
             return {
-                alpha3Code: alpha3Code,
-                name: name,
-                capital: capital,
-                borders: longNameBorders
+                alpha3Code: selectedCountry.alpha3Code,
+                name: selectedCountry.name,
+                capital: selectedCountry.capital,
+                // borders: longNameBorders
             };
         });
     };
@@ -81,13 +85,14 @@ export class MainComponent extends Component {
             <div>
                 <CountrySelectComponent countries={allCountries} changedSelectOption={this.changedSelectOption}/>
                 <CountryDetailsComponent details={this.state}/>
-                {this.state.borders.map((border)=>{
-                    return (
-                        <div>
-                            <CountryBordersComponent border = {border}/>
-                        </div>
-                    )
-                })}
+                {/*{this.state.borders.map((border) => {*/}
+                {/*return (*/}
+                {/*<div>*/}
+
+                {/*<CountryBordersComponent border={border}/>*/}
+                {/*</div>*/}
+                {/*)*/}
+                {/*})}*/}
             </div>
         );
     }
