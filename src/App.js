@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import React, {Component} from 'react';
 import './App.css';
 
 import {MainComponent} from "./Components/MainComponent/MainComponent";
@@ -18,3 +18,5 @@ class App extends Component {
 }
 
 export default App;
+
+

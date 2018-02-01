@@ -45,7 +45,7 @@ export class MainComponent extends Component {
         // let capital = '';
         // let alpha3CodeBorders = [];
         // let longNameBorders = [];
-
+xx test
         //Dane dot. wybranego Kraju
         const selectedCountry = allCountries.find(country => country.alpha3Code === alpha3Code);
         console.log(selectedCountry)
