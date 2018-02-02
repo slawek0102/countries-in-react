@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const CountrySelectComponent = (props) => (
+export const SelectedCountryComponent = (props) => (
     <div>
         <select  onChange={props.changedSelectOption}>
             {props.countries.map((country)=>{

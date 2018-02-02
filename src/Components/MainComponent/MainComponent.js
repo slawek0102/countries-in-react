@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import Button from 'material-ui/Button';
+// import Button from 'material-ui/Button';
 
 import './MainComponent.css'
 
 import {CountryDetailsComponent} from "../CountryDetailsComponent/CountryDetailsComponent";
-import {CountrySelectComponent} from '../CountrySelectComponent/CountrySelectComponent'
+import {SelectedCountryComponent} from '../SelectedCountryComponent/SelectedCountryComponent'
 import {CountryBordersComponent} from '../CountryBordersComponent/CountryBordersComponent'
 import {getDataFromAPI} from '../../utils/getDataFromAPI'
 
-import {allCountriesHTTPAddress} from 'ApplicationConstants';
+import {allCountriesHTTPAddress} from '../../const/const';
 
 
 export class MainComponent extends Component {
@@ -34,8 +34,6 @@ export class MainComponent extends Component {
         e.preventDefault();
         const temp_alpha3Code = e.target.value;
         const countryDetails = this.findCountryDetails(temp_alpha3Code);
-
-
     };
 
 
@@ -45,25 +43,16 @@ export class MainComponent extends Component {
         // let capital = '';
         // let alpha3CodeBorders = [];
         // let longNameBorders = [];
-xx test
+
         //Dane dot. wybranego Kraju
         const selectedCountry = allCountries.find(country => country.alpha3Code === alpha3Code);
-        console.log(selectedCountry)
 
-        // .filter
-        // alpha3CodeBorders.forEach((alpha3CodeBorder) => {
-        //     allCountries.map((country) => {
-        //         if (country.alpha3Code === alpha3CodeBorder) {
-        //             longNameBorders.push(country.name)
-        //         }
-        //     })
-        // });
 
         const borders = allCountries.filter((country) =>
             selectedCountry.borders.find(border => border === country.alpha3Code)
         );
 
-             console.log('Moje granice', borders);
+        console.log('Moje granice', borders);
 
 
         this.setState(() => {
@@ -81,7 +70,7 @@ xx test
         const {allCountries} = this.state;
         return (
             <div>
-                <CountrySelectComponent countries={allCountries} changedSelectOption={this.changedSelectOption}/>
+                <SelectedCountryComponent countries={allCountries} changedSelectOption={this.changedSelectOption}/>
                 <CountryDetailsComponent details={this.state}/>
                 {/*{this.state.borders.map((border) => {*/}
                 {/*return (*/}
