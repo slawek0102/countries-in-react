@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const SelectedCountryComponent = (props) => (
+export const SelectCountryComponent = (props) => (
     <div>
         <select  onChange={props.changedSelectOption}>
             {props.countries.map((country)=>{
@@ -10,6 +10,4 @@ export const SelectedCountryComponent = (props) => (
             })}
         </select>
     </div>
-);
-
-
+)

@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 // import Button from 'material-ui/Button';
+import Switch from 'material-ui/Switch';
 
 import './MainComponent.css'
 
-import {CountryDetailsComponent} from "../CountryDetailsComponent/CountryDetailsComponent";
-import {SelectedCountryComponent} from '../SelectedCountryComponent/SelectedCountryComponent'
+import {SelectedCountryDetailsComponent} from "../SelectedCountryDetailsComponent/SelectedCountryDetailsComponent";
+import {SelectCountryComponent} from '../SelectCountryComponent/SelectCountryComponent'
 import {CountryBordersComponent} from '../CountryBordersComponent/CountryBordersComponent'
 import {getDataFromAPI} from '../../utils/getDataFromAPI'
 
@@ -28,7 +29,6 @@ export class MainComponent extends Component {
             this.setState({allCountries: data})
         })
     };
-
 
     changedSelectOption = (e) => {
         e.preventDefault();
@@ -70,8 +70,12 @@ export class MainComponent extends Component {
         const {allCountries} = this.state;
         return (
             <div>
-                <SelectedCountryComponent countries={allCountries} changedSelectOption={this.changedSelectOption}/>
-                <CountryDetailsComponent details={this.state}/>
+                <SelectCountryComponent countries={allCountries} changedSelectOption={this.changedSelectOption}/>
+
+                <SelectedCountryDetailsComponent details={this.state}/>
+
+
+
                 {/*{this.state.borders.map((border) => {*/}
                 {/*return (*/}
                 {/*<div>*/}

@@ -1,13 +1,14 @@
 import React from 'react';
+import './SelectedCountryDetailsComponent.css';
 
-import './CountryDetailsComponent.css';
-
-export const CountryDetailsComponent = (props) => (
+export const SelectedCountryDetailsComponent = (props) => (
     <div className='country-details'>
-      <div>Name: {props.details.name}</div>
+      <h3>Name: {props.details.name}</h3>
       <div>Capital: {props.details.capital}</div>
       <div>Country Code: {props.details.alpha3Code}</div>
     </div>
 );
+
+
 
 
