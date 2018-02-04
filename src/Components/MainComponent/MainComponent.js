@@ -32,10 +32,9 @@ export class MainComponent extends Component {
 
     changedSelectOption = (e) => {
         e.preventDefault();
-        const temp_alpha3Code = e.target.value;
-        const countryDetails = this.findCountryDetails(temp_alpha3Code);
-    };
+        const countryDetails = this.findCountryDetails(e.target.value);
 
+    };
 
     findCountryDetails = (alpha3Code) => {
         const allCountries = this.state.allCountries;
