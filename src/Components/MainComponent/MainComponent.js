@@ -17,10 +17,12 @@ export class MainComponent extends Component {
         super(props)
         this.state = {
             allCountries: [],
-            name: '',
-            capital: '',
-            alpha3Code: '',
-            borders: []
+            selectedCountry: {
+                name: 'name',
+                capital: 'capital',
+                alpha3Code: 'alpha3Code',
+                borders: ['borders', 'borders']
+            },
         }
     }
 
@@ -33,36 +35,39 @@ export class MainComponent extends Component {
     changedSelectOption = (e) => {
         e.preventDefault();
         const alpha3Code = e.target.value;
+        const {allCountries} = this.state;
 
-            const allCountries = this.state.allCountries;
-            const selectedCountry = allCountries.find(country => country.alpha3Code === alpha3Code);
-
-
-        const borders = allCountries.filter((country) =>
+        const selectedCountry = allCountries.find(country => country.alpha3Code === alpha3Code);
+        const selectedCountryBorders = allCountries.filter((country) =>
             selectedCountry.borders.find(border => border === country.alpha3Code)
-        );
+        ).map(country => country.name);
 
-        console.log('Moje granice', borders);
 
         this.setState(() => {
+
+            let {name,capital,alpha3Code} = selectedCountry;
+
             return {
-                alpha3Code: selectedCountry.alpha3Code,
-                name: selectedCountry.name,
-                capital: selectedCountry.capital,
-                // borders: longNameBorders
+                //W this.State umiescilem object selectedCounty. Chce teraz do niego zapisywac. Jak to zrobic? Nie umiem.
+                selectedCountry.alpha3Code: alpha3Code,
+
+                name: name,
+                capital: capital,
+                borders: selectedCountryBorders
             };
-        });
+        })
     };
 
 
     render() {
+
         const {allCountries} = this.state;
+        console.log('moj state',this.state)
         return (
             <div>
                 <SelectCountryComponent countries={allCountries} changedSelectOption={this.changedSelectOption}/>
 
                 <SelectedCountryDetailsComponent details={this.state}/>
-
 
 
                 {/*{this.state.borders.map((border) => {*/}
@@ -75,5 +80,6 @@ export class MainComponent extends Component {
                 {/*})}*/}
             </div>
         );
+
     }
 }
