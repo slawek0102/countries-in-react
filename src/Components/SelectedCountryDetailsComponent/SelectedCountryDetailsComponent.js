@@ -6,7 +6,6 @@ import Paper from 'material-ui/Paper';
 
 export const SelectedCountryDetailsComponent = (props) => (
     <div>
-        {/*<Paper>*/}
 
             <Paper>
                 <p>Name: {props.details.name}</p>
@@ -19,7 +18,6 @@ export const SelectedCountryDetailsComponent = (props) => (
                 })}
             </Paper>
 
-        {/*</Paper>*/}
     </div>
 );
 
