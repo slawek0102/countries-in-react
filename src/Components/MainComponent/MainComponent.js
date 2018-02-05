@@ -1,16 +1,14 @@
 import React, {Component} from 'react';
 // import Button from 'material-ui/Button';
-import Switch from 'material-ui/Switch';
+// import Switch from 'material-ui/Switch';
 
 import './MainComponent.css'
 
 import {SelectedCountryDetailsComponent} from "../SelectedCountryDetailsComponent/SelectedCountryDetailsComponent";
 import {SelectCountryComponent} from '../SelectCountryComponent/SelectCountryComponent'
-import {CountryBordersComponent} from '../CountryBordersComponent/CountryBordersComponent'
 import {getDataFromAPI} from '../../utils/getDataFromAPI'
 
 import {allCountriesHTTPAddress} from '../../const/const';
-
 
 export class MainComponent extends Component {
     constructor(props) {
@@ -18,10 +16,10 @@ export class MainComponent extends Component {
         this.state = {
             allCountries: [],
             selectedCountry: {
-                name: 'name',
-                capital: 'capital',
-                alpha3Code: 'alpha3Code',
-                borders: ['borders', 'borders']
+                name: '',
+                capital: '',
+                alpha3Code: '',
+                borders: []
             },
         }
     }
@@ -57,22 +55,10 @@ export class MainComponent extends Component {
     render() {
 
         const {allCountries} = this.state;
-        console.log('moj state', this.state)
         return (
             <div>
                 <SelectCountryComponent countries={allCountries} changedSelectOption={this.changedSelectOption}/>
-
                 <SelectedCountryDetailsComponent details={this.state.selectedCountry}/>
-
-
-                {/*{this.state.borders.map((border) => {*/}
-                {/*return (*/}
-                {/*<div>*/}
-
-                {/*<CountryBordersComponent border={border}/>*/}
-                {/*</div>*/}
-                {/*)*/}
-                {/*})}*/}
             </div>
         );
 
