@@ -42,19 +42,14 @@ export class MainComponent extends Component {
             selectedCountry.borders.find(border => border === country.alpha3Code)
         ).map(country => country.name);
 
-
-        this.setState(() => {
-
-            let {name,capital,alpha3Code} = selectedCountry;
-
-            return {
-                //W this.State umiescilem object selectedCounty. Chce teraz do niego zapisywac. Jak to zrobic? Nie umiem.
-                selectedCountry.alpha3Code: alpha3Code,
-
-                name: name,
-                capital: capital,
+        this.setState({
+            selectedCountry: {
+                ...this.state.selectedCountry,
+                alpha3Code: alpha3Code,
+                name: selectedCountry.name,
+                capital: selectedCountry.capital,
                 borders: selectedCountryBorders
-            };
+            }
         })
     };
 
@@ -62,12 +57,12 @@ export class MainComponent extends Component {
     render() {
 
         const {allCountries} = this.state;
-        console.log('moj state',this.state)
+        console.log('moj state', this.state)
         return (
             <div>
                 <SelectCountryComponent countries={allCountries} changedSelectOption={this.changedSelectOption}/>
 
-                <SelectedCountryDetailsComponent details={this.state}/>
+                <SelectedCountryDetailsComponent details={this.state.selectedCountry}/>
 
 
                 {/*{this.state.borders.map((border) => {*/}
