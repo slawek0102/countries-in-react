@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-// import Button from 'material-ui/Button';
-// import Switch from 'material-ui/Switch';
+import Paper from 'material-ui/Paper';
 
 import './MainComponent.css'
 
@@ -57,8 +56,17 @@ export class MainComponent extends Component {
         const {allCountries} = this.state;
         return (
             <div>
-                <SelectCountryComponent countries={allCountries} changedSelectOption={this.changedSelectOption}/>
-                <SelectedCountryDetailsComponent details={this.state.selectedCountry}/>
+
+                <Paper className='paper'>
+                    <SelectCountryComponent countries={allCountries} changedSelectOption={this.changedSelectOption}/>
+                </Paper>
+
+                <Paper className='paper'>
+                    <SelectedCountryDetailsComponent details={this.state.selectedCountry}/>
+                </Paper>
+
+
+
             </div>
         );
 

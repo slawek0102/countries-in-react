@@ -1,14 +1,25 @@
 import React from 'react';
 import './SelectedCountryDetailsComponent.css';
 
-export const SelectedCountryDetailsComponent = (props) => (
-    <div className='country-details'>
-      <h4>Name: {props.details.name}</h4>
-      <h4>Capital: {props.details.capital}</h4>
+import Paper from 'material-ui/Paper';
 
-        {props.details.borders.map((border)=>{
-            return (<div key={border}>Border: {border}</div>)
-        })}
+
+export const SelectedCountryDetailsComponent = (props) => (
+    <div>
+        {/*<Paper>*/}
+
+            <Paper>
+                <p>Name: {props.details.name}</p>
+                <p>Capital: {props.details.capital}</p>
+            </Paper>
+
+            <Paper>
+                {props.details.borders.map((border) => {
+                    return (<div key={border}>Border: {border}</div>)
+                })}
+            </Paper>
+
+        {/*</Paper>*/}
     </div>
 );
 

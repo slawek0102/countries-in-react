@@ -4,3 +4,9 @@
     border: 1px coral dashed;
     margin: 5px;
 }
+
+.paper{
+    margin: 20px auto;
+    width: 60%;
+    padding: 20px;
+}
