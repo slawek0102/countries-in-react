@@ -2,6 +2,7 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 
 import './SelectedCountryDetailsComponent.css';
+import {GoogleMapComponent} from '../GoogleMapComponent/GoogleMapComponent'
 
 const style = {
     height: 50,
@@ -16,7 +17,6 @@ const style = {
 
 
 export const SelectedCountryDetailsComponent = (props) => {
-    const {classes} = props;
     return (<div>
         <Paper>
             <p>Name: {props.details.name}</p>
@@ -26,6 +26,8 @@ export const SelectedCountryDetailsComponent = (props) => {
         {props.details.borders.map((border) => {
             return (<Paper style={style} zDepth={5} key={border}>{border}</Paper>)
         })}
+
+        <GoogleMapComponent isMarkerShown/>
 
     </div>)
 }
