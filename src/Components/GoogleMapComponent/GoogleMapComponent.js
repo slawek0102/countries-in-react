@@ -12,24 +12,27 @@ export const GoogleMapComponent = compose(
         loadingElement: <div style={{ height: `100%` }} />,
         containerElement: <div style={{ height: `400px` }} />,
         mapElement: <div style={{ height: `100%` }} />,
+        // lat: 1,
+        // lng: 1
+
     }),
     withScriptjs,
     withGoogleMap
 )((props) => {
 
-
-    const lat = Number(props.latlng[0])
-    const lng = Number(props.latlng[1])
+console.log(props)
 
 
     return (
 
+
     <GoogleMap
-        defaultZoom={8}
-        // defaultCenter={{ lat: -34.397, lng: 150.644 }}
-        defaultCenter={{lat: lat, lng: lng}}
+        defaultZoom={4}
+        // defaultCenter={{ lat: props.latlng[0], lng: props.latlng[1] }}
+        defaultCenter={{lat: props.lat, lng: props.lat}}
 
     >
         {/*{props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}*/}
     </GoogleMap> )
+
 })
