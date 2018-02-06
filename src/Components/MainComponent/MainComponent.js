@@ -6,6 +6,7 @@ import './MainComponent.css'
 import {SelectedCountryDetailsComponent} from "../SelectedCountryDetailsComponent/SelectedCountryDetailsComponent";
 import {SelectCountryComponent} from '../SelectCountryComponent/SelectCountryComponent'
 import {getDataFromAPI} from '../../utils/getDataFromAPI'
+import {GoogleMapComponent} from '../GoogleMapComponent/GoogleMapComponent'
 
 import {allCountriesHTTPAddress} from '../../const/const';
 
@@ -19,7 +20,7 @@ export class MainComponent extends Component {
                 capital: '',
                 alpha3Code: '',
                 borders: [],
-                latlng: []
+                latlng: [-30, -30]
             },
         }
     }
@@ -54,11 +55,10 @@ export class MainComponent extends Component {
 
 
     render() {
-
+        console.log(this.state.selectedCountry.latlng)
         const {allCountries} = this.state;
         return (
             <div>
-
                 <Paper className='paper'>
                     <SelectCountryComponent countries={allCountries} changedSelectOption={this.changedSelectOption}/>
                 </Paper>
@@ -67,8 +67,10 @@ export class MainComponent extends Component {
                     <SelectedCountryDetailsComponent details={this.state.selectedCountry}/>
                 </Paper>
 
-
-
+                <Paper className='paper'>
+                    <GoogleMapComponent isMarkerShown lat={this.state.selectedCountry.latlng[0]}
+                                        lng={this.state.selectedCountry.latlng[1]}/>
+                </Paper>
             </div>
         );
 
