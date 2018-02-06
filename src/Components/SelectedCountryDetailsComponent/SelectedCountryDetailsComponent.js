@@ -17,6 +17,7 @@ const style = {
 
 
 export const SelectedCountryDetailsComponent = (props) => {
+
     return (<div>
         <Paper>
             <p>Name: {props.details.name}</p>
@@ -24,10 +25,10 @@ export const SelectedCountryDetailsComponent = (props) => {
         </Paper>
 
         {props.details.borders.map((border) => {
-            return (<Paper style={style} zDepth={5} key={border}>{border}</Paper>)
+            return (<Paper style={style} zdepth={5} key={border}>{border}</Paper>)
         })}
 
-        <GoogleMapComponent isMarkerShown/>
+        <GoogleMapComponent isMarkerShown latlng = {props.details.latlng}/>
 
     </div>)
 }

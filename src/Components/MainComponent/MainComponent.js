@@ -18,7 +18,8 @@ export class MainComponent extends Component {
                 name: '',
                 capital: '',
                 alpha3Code: '',
-                borders: []
+                borders: [],
+                latlng: []
             },
         }
     }
@@ -45,7 +46,8 @@ export class MainComponent extends Component {
                 alpha3Code: alpha3Code,
                 name: selectedCountry.name,
                 capital: selectedCountry.capital,
-                borders: selectedCountryBorders
+                borders: selectedCountryBorders,
+                latlng: selectedCountry.latlng
             }
         })
     };
