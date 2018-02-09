@@ -55,7 +55,6 @@ export class MainComponent extends Component {
 
 
     render() {
-        console.log(this.state.selectedCountry.latlng)
         const {allCountries} = this.state;
         return (
             <div>
@@ -68,8 +67,7 @@ export class MainComponent extends Component {
                 </Paper>
 
                 <Paper className='paper'>
-                    <GoogleMapComponent isMarkerShown lat={this.state.selectedCountry.latlng[0]}
-                                        lng={this.state.selectedCountry.latlng[1]}/>
+                    <GoogleMapComponent isMarkerShown latlng={this.state.selectedCountry.latlng}/>
                 </Paper>
             </div>
         );

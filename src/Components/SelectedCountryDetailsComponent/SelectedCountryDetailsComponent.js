@@ -29,7 +29,6 @@ export const SelectedCountryDetailsComponent = (props) => {
             return (<Paper style={style} zdepth={5} key={border}>{border}</Paper>)
         })}
 
-
     </div>)
 }
 
