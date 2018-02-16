@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { compose, withProps } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap} from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker} from "react-google-maps"
 
 
 export const GoogleMapComponent = compose(
@@ -21,6 +21,7 @@ console.log(props)
         defaultCenter={{lat: props.lat, lng: props.lat}}
         center={{lat: props.latlng[0], lng: props.latlng[1]}}
     >
+        <Marker position={{lat: props.latlng[0], lng: props.latlng[1]}} />
     </GoogleMap> )
 
 })
