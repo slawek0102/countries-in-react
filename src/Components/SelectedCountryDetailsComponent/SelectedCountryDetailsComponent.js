@@ -15,10 +15,6 @@ const style = {
     lineHeight: 'normal'
 };
 
-const jajo = {
-    margin: 10,
-    padding: 10
-}
 
 export const SelectedCountryDetailsComponent = (props) => {
 
@@ -33,7 +29,7 @@ export const SelectedCountryDetailsComponent = (props) => {
 
 
             return (
-                    <RaisedButton key = {border} label= {border} style={jajo} />
+                    <RaisedButton key = {border} label= {border} className='raised-button' />
             )
         })}
 
