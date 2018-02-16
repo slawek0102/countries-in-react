@@ -1,17 +1,13 @@
-/*.country-details {*/
-    /*width: 30%;*/
-    /*padding: 6px 10px;*/
-    /*border: 1px coral dashed;*/
-    /*margin: 5px;*/
-/*}*/
-
-/*.paper{*/
-    /*margin: 20px auto;*/
-    /*width: 60%;*/
-    /*padding: 20px;*/
-/*}*/
-
-.borders{
-    background-color: red;
-
+.country-details {
+    width: 30%;
+    padding: 6px 10px;
+    border: 1px coral dashed;
+    margin: 5px;
 }
+
+.paper{
+    margin: 20px auto;
+    width: 60%;
+    padding: 20px;
+}
+

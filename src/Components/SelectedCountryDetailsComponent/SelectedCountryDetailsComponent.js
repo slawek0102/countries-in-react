@@ -1,5 +1,6 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import './SelectedCountryDetailsComponent.css';
 
@@ -14,10 +15,7 @@ const style = {
     lineHeight: 'normal'
 };
 
-
 export const SelectedCountryDetailsComponent = (props) => {
-
-
 
     return (<div>
         <Paper>
@@ -26,7 +24,12 @@ export const SelectedCountryDetailsComponent = (props) => {
         </Paper>
 
         {props.details.borders.map((border) => {
-            return (<Paper style={style} zdepth={5} key={border}>{border}</Paper>)
+            // return (<Paper style={style} zdepth={5} key={border}>{border}</Paper>)
+
+
+            return (
+                    <RaisedButton key = {border} label= {border} />
+            )
         })}
 
     </div>)
