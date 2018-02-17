@@ -64,7 +64,8 @@ export class MainComponent extends Component {
                 <div>
                     <Paper className='paper'>
                         <SelectCountryComponent countries={allCountries}
-                                                changedSelectOption={this.changedSelectOption}/>
+                                                 // changedSelectOption={this.changedSelectOption}
+                        />
                     </Paper>
 
                     <Paper className='paper'>
