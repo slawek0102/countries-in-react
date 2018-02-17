@@ -15,7 +15,7 @@ export const SelectedCountryDetailsComponent = (props) => {
         {props.details.borders.map((border) => {
 
             return (
-                    <RaisedButton key = {border} label= {border} className='button--borders-margin' />
+                    <RaisedButton key = {border} label= {border} className='b-button_borders' />
             )
         })}
 
