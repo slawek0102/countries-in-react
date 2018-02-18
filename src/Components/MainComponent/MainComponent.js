@@ -32,6 +32,10 @@ export class MainComponent extends Component {
         })
     };
 
+    changeCountryButtonClick = (clickedCountry) =>{
+       this.handleUpdateInput(clickedCountry);
+    };
+
     handleUpdateInput = (value) => {
         const {allCountries} = this.state;
 
@@ -58,7 +62,10 @@ export class MainComponent extends Component {
         return (
             <div>
                 <Paper className='paper'>
-                    <SelectedCountryDetailsComponent details={this.state.selectedCountry}/>
+                    <SelectedCountryDetailsComponent
+                        details={this.state.selectedCountry}
+                        changeCountryButtonClick = {this.changeCountryButtonClick}
+                    />
                 </Paper>
 
                 <Paper className='paper'>

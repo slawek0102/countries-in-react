@@ -5,7 +5,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import './SelectedCountryDetailsComponent.css';
 
 export const SelectedCountryDetailsComponent = (props) => {
-
     return (<div>
         <Paper>
             <p>Name: {props.details.name}</p>
@@ -15,7 +14,12 @@ export const SelectedCountryDetailsComponent = (props) => {
         {props.details.borders.map((border) => {
 
             return (
-                    <RaisedButton key = {border} label= {border} className='b-button_borders' />
+                    <RaisedButton
+                        key = {border}
+                        label= {border}
+                        className='b-button_borders'
+                        onClick={props.changeCountryButtonClick.bind(this,border)}
+                    />
             )
         })}
 
