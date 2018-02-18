@@ -54,6 +54,21 @@ export class MainComponent extends Component {
     };
 
 
+    detailsToDisplay = () => {
+        return (
+            <div>
+                <Paper className='paper'>
+                    <SelectedCountryDetailsComponent details={this.state.selectedCountry}/>
+                </Paper>
+
+                <Paper className='paper'>
+                    <GoogleMapComponent isMarkerShown latlng={this.state.selectedCountry.latlng}/>
+                </Paper>
+            </div>
+        )
+    };
+
+
     render() {
         const {allCountries} = this.state;
         return (
@@ -64,16 +79,15 @@ export class MainComponent extends Component {
                     />
                 </Paper>
 
-                <Paper className='paper'>
-                    <SelectedCountryDetailsComponent details={this.state.selectedCountry}/>
-                </Paper>
+                {this.state.selectedCountry.name ? this.detailsToDisplay() :null}
 
-                <Paper className='paper'>
-                    <GoogleMapComponent isMarkerShown latlng={this.state.selectedCountry.latlng}/>
-                </Paper>
             </div>
         );
 
     }
 }
+
+
+
+
 
