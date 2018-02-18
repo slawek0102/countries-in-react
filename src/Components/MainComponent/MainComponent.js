@@ -79,7 +79,7 @@ export class MainComponent extends Component {
                     />
                 </Paper>
 
-                {this.state.selectedCountry.name ? this.detailsToDisplay() :null}
+                {this.state.selectedCountry.name && this.detailsToDisplay()}
 
             </div>
         );
