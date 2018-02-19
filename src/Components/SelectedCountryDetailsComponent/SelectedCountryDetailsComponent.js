@@ -5,7 +5,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import './SelectedCountryDetailsComponent.css';
 
 export const SelectedCountryDetailsComponent = (props) => {
-
     return (<div>
         <Paper>
             <p>Name: {props.details.name}</p>
@@ -13,7 +12,6 @@ export const SelectedCountryDetailsComponent = (props) => {
         </Paper>
 
         {props.details.borders.map((border) => {
-
             return (
                     <RaisedButton
                         key = {border}
@@ -23,7 +21,6 @@ export const SelectedCountryDetailsComponent = (props) => {
                     />
             )
         })}
-
     </div>)
 }
 

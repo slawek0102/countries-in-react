@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import Paper from 'material-ui/Paper';
 
-
 import './MainComponent.css'
 
 import {SelectedCountryDetailsComponent} from "../SelectedCountryDetailsComponent/SelectedCountryDetailsComponent";
 import {SelectCountryComponent} from '../SelectCountryComponent/SelectCountryComponent'
 import {getDataFromAPI} from '../../utils/getDataFromAPI'
 import {GoogleMapComponent} from '../GoogleMapComponent/GoogleMapComponent'
-
 
 import {allCountriesHTTPAddress, selectedCountry} from '../../const/const';
 
@@ -28,7 +26,6 @@ export class MainComponent extends Component {
     };
 
     changeCountryButtonClick = (clickedCountry) =>{
-
         this.handleUpdateInput(clickedCountry);
     };
 
@@ -53,7 +50,6 @@ export class MainComponent extends Component {
         }
     };
 
-
     detailsToDisplay = () => {
         const {selectedCountry} = this.state;
         return (
@@ -64,9 +60,10 @@ export class MainComponent extends Component {
                         changeCountryButtonClick = {this.changeCountryButtonClick}
                     />
                 </Paper>
-
                 <Paper className='paper'>
-                    <GoogleMapComponent isMarkerShown latlng={this.state.selectedCountry.latlng}/>
+                    <GoogleMapComponent
+                        isMarkerShown
+                        latlng={this.state.selectedCountry.latlng}/>
                 </Paper>
             </div>
         )
@@ -82,12 +79,9 @@ export class MainComponent extends Component {
                                             handleUpdateInput={this.handleUpdateInput}
                     />
                 </Paper>
-
                 {this.state.selectedCountry.name && this.detailsToDisplay()}
-
             </div>
         );
-
     }
 }
 
