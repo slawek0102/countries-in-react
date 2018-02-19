@@ -13,12 +13,14 @@ export const SelectedCountryDetailsComponent = (props) => {
 
         {props.details.borders.map((border) => {
 
+            console.log('Moje propsy', props)
+
             return (
                     <RaisedButton
                         key = {border}
                         label= {border}
                         className='b-button_borders'
-                        onClick={props.changeCountryButtonClick.bind(this,border)}
+                        onClick={props.changeCountryButtonClick(border)}
                     />
             )
         })}

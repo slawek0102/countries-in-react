@@ -10,19 +10,14 @@ import {getDataFromAPI} from '../../utils/getDataFromAPI'
 import {GoogleMapComponent} from '../GoogleMapComponent/GoogleMapComponent'
 
 
-import {allCountriesHTTPAddress} from '../../const/const';
+import {allCountriesHTTPAddress, selectedCountry} from '../../const/const';
 
 export class MainComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
             allCountries: [],
-            selectedCountry: {
-                name: '',
-                capital: '',
-                borders: [],
-                latlng: [-30, -30]
-            },
+            selectedCountry: selectedCountry
         }
     }
 
@@ -33,14 +28,17 @@ export class MainComponent extends Component {
     };
 
     changeCountryButtonClick = (clickedCountry) =>{
-       this.handleUpdateInput(clickedCountry);
+
+        console.log("Nacisniety kraj:" ,clickedCountry)
+
+        //this.handleUpdateInput(clickedCountry);
     };
 
     handleUpdateInput = (value) => {
         const {allCountries} = this.state;
 
         const selectedCountry = allCountries.find(country => country.name === value);
-        if (selectedCountry != null) {
+        if (selectedCountry !== undefined) {
             const selectedCountryBorders = allCountries.filter((country) =>
                 selectedCountry.borders.find(border => border === country.alpha3Code)
             ).map(country => country.name);
@@ -59,11 +57,12 @@ export class MainComponent extends Component {
 
 
     detailsToDisplay = () => {
+        const {selectedCountry} = this.state;
         return (
             <div>
                 <Paper className='paper'>
                     <SelectedCountryDetailsComponent
-                        details={this.state.selectedCountry}
+                        details={selectedCountry}
                         changeCountryButtonClick = {this.changeCountryButtonClick}
                     />
                 </Paper>
