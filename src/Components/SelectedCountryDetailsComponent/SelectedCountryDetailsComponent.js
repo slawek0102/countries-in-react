@@ -4,18 +4,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import './SelectedCountryDetailsComponent.css';
 
-const style = {
-    height: 50,
-    width: 300,
-    paddingTop: 25,
-    margin: 10,
-    textAlign: 'center',
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    lineHeight: 'normal'
-};
-
-
 export const SelectedCountryDetailsComponent = (props) => {
 
     return (<div>
@@ -25,11 +13,14 @@ export const SelectedCountryDetailsComponent = (props) => {
         </Paper>
 
         {props.details.borders.map((border) => {
-            // return (<Paper style={style} zdepth={5} key={border}>{border}</Paper>)
-
 
             return (
-                    <RaisedButton key = {border} label= {border} className='raised-button' />
+                    <RaisedButton
+                        key = {border}
+                        label= {border}
+                        className='b-button_borders'
+                        onClick={()=>props.changeCountryButtonClick(border)}
+                    />
             )
         })}
 
