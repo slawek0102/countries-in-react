@@ -27,9 +27,9 @@ export class MainComponent extends Component {
         })
     };
 
-    changeCountryButtonClick = (clickedCountry) =>{
+    changeCountryButtonClick = (e) =>{
 
-        console.log("Nacisniety kraj:" ,clickedCountry)
+        console.log("Nacisniety kraj:" ,e.target)
 
         //this.handleUpdateInput(clickedCountry);
     };
