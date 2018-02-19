@@ -29,7 +29,7 @@ export class MainComponent extends Component {
 
     changeCountryButtonClick = (e) =>{
 
-        console.log("Nacisniety kraj:" ,e.target)
+        console.log("Nacisniety kraj:" ,e)
 
         //this.handleUpdateInput(clickedCountry);
     };

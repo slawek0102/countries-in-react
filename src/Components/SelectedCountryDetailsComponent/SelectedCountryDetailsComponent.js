@@ -18,7 +18,7 @@ export const SelectedCountryDetailsComponent = (props) => {
                         key = {border}
                         label= {border}
                         className='b-button_borders'
-                        onClick={props.changeCountryButtonClick}
+                        onClick={(e)=>props.changeCountryButtonClick(e)}
                     />
             )
         })}
