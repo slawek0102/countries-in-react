@@ -9,30 +9,43 @@ export const PopulacjaSwiataComponent = (props) => {
 
     return (
         <div>
+            <Paper className='b-paper b-country' zDepth={3}>
+                Total: {formatPopulation(totalPopulation(countries))}
+            </Paper>
+
             {countries.map((country) => {
-                return (<Paper className='b-paper' zDepth={3}>
-                    <div className='b-country'>{country.name}</div>
-                    <div> {formatCountryPopulation(country.population)}</div>
-                </Paper>)
+                return (
+                    <Paper className='b-paper' zDepth={3} key = {country.name}>
+                        <div className='b-country'>{country.name}</div>
+                        <div>Population: {formatPopulation(country.population)}</div>
+                    </Paper>
+                )
             })}
         </div>
     )
 };
 
 
-let formatCountryPopulation = (population) =>{
+const formatPopulation = (population) => {
+    let counter = 0;
 
-    let licznik = 1;
+    const reversedStringPopulationArray = population.toString().split("").reverse();
 
-      const reversedStringPopulationArray = population.toString().split("").reverse();
+    return reversedStringPopulationArray.map((digit) => {
+        counter++;
+        if (counter > 3) {
+            counter = 1;
+            return digit + ' ';
+        } else {
+            return digit
+        }
+    }).reverse()
+};
 
-       return reversedStringPopulationArray.map((digit)=>{
-           if (licznik >3){
-               licznik =2;
-               return digit + ' ';
-           } else {
-               licznik ++;
-               return digit
-           }
-      }).reverse()
+
+const totalPopulation = (countries) => {
+   return countries.map(country => country.population)
+        .reduce((a, b) => {
+            return a + b;
+        }, 0)
 };
