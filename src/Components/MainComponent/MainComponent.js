@@ -9,6 +9,7 @@ import {getDataFromAPI} from '../../utils/getDataFromAPI'
 import {GoogleMapComponent} from '../GoogleMapComponent/GoogleMapComponent'
 
 import {allCountriesHTTPAddress, selectedCountry} from '../../const/const';
+import {PopulacjaSwiataComponent} from "../PopulacjaSwiataComponent/PopulacjaSwiataComponent";
 
 export class MainComponent extends Component {
     constructor(props) {
@@ -25,7 +26,7 @@ export class MainComponent extends Component {
         })
     };
 
-    changeCountryButtonClick = (clickedCountry) =>{
+    changeCountryButtonClick = (clickedCountry) => {
         this.handleUpdateInput(clickedCountry);
     };
 
@@ -57,7 +58,7 @@ export class MainComponent extends Component {
                 <Paper className='paper'>
                     <SelectedCountryDetailsComponent
                         details={selectedCountry}
-                        changeCountryButtonClick = {this.changeCountryButtonClick}
+                        changeCountryButtonClick={this.changeCountryButtonClick}
                     />
                 </Paper>
                 <Paper className='paper'>
@@ -74,13 +75,19 @@ export class MainComponent extends Component {
         const {allCountries} = this.state;
         return (
             <div>
-                <Paper className='paper'>
-                    <SelectCountryComponent countries={allCountries}
-                                            handleUpdateInput={this.handleUpdateInput}
-                    />
-                </Paper>
-                {this.state.selectedCountry.name && this.detailsToDisplay()}
+                {/*<div>*/}
+                    {/*<Paper className='paper'>*/}
+                        {/*<SelectCountryComponent countries={allCountries}*/}
+                                                {/*handleUpdateInput={this.handleUpdateInput}*/}
+                        {/*/>*/}
+                    {/*</Paper>*/}
+                    {/*{this.state.selectedCountry.name && this.detailsToDisplay()}*/}
+                {/*</div>*/}
+                <div>
+                    <PopulacjaSwiataComponent countries = {allCountries}/>
+                </div>
             </div>
+
         );
     }
 }
