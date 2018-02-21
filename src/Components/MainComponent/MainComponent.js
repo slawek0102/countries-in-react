@@ -16,6 +16,7 @@ export class MainComponent extends Component {
         super(props)
         this.state = {
             allCountries: [],
+            sliderValue: 5,
             selectedCountry: selectedCountry
         }
     }
@@ -51,6 +52,16 @@ export class MainComponent extends Component {
         }
     };
 
+    handleSlider = (e,newValue) =>{
+        console.log("Moje value",newValue)
+        this.setState({
+            sliderValue: newValue
+        })
+
+
+
+    }
+
     detailsToDisplay = () => {
         const {selectedCountry} = this.state;
         return (
@@ -72,7 +83,7 @@ export class MainComponent extends Component {
 
 
     render() {
-        const {allCountries} = this.state;
+        const {allCountries, sliderValue} = this.state;
         return (
             <div>
                 {/*<div>*/}
@@ -84,7 +95,7 @@ export class MainComponent extends Component {
                     {/*{this.state.selectedCountry.name && this.detailsToDisplay()}*/}
                 {/*</div>*/}
                 <div>
-                    <PopulacjaSwiataComponent countries = {allCountries}/>
+                    <PopulacjaSwiataComponent countries = {allCountries} sliderValue ={sliderValue} handleSlider = {this.handleSlider}/>
                 </div>
             </div>
 

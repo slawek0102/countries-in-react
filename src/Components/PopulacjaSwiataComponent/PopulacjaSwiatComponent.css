@@ -11,3 +11,21 @@
     font-weight: bold;
     font-size: larger;
 }
+
+.b-slider{
+    height: 100px;
+    width: 500px;
+    margin: 20px auto;
+    text-align: center;
+    display: block;
+    /*padding: 30px;*/
+}
+
+p{
+    height: 20px;
+    width: 500px;
+    margin : 20px auto;
+    text-align: center;
+    display: block;
+    padding-top: 30px;
+}
