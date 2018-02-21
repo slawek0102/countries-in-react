@@ -53,13 +53,10 @@ export class MainComponent extends Component {
     };
 
     handleSlider = (e,newValue) =>{
-        console.log("Moje value",newValue)
+
         this.setState({
             sliderValue: newValue
         })
-
-
-
     }
 
     detailsToDisplay = () => {

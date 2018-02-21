@@ -41,16 +41,36 @@ export const PopulacjaSwiataComponent = (props) => {
             <Tab label="Countries & number of borders">
                 <div>
 
-                    <p>Wyszukiwana liczba granic {sliderValue} i więcej.</p>
+                    <p>Wyszukiwana liczba granic {sliderValue} i wiecej.</p>
 
                     <Slider
                         min={0}
-                        max={20}
+                        max={15}
                         step={1}
                         value={sliderValue}
                         onChange={handleSlider}
                         className='b-slider'
                     />
+
+                    <div>
+
+                        {
+                            countries.filter((country) => {
+                              if (country.borders.length >= sliderValue) {return country}
+
+                            }).map((country) => {
+                                console.log(country)
+                                return (
+                                    <Paper className='b-paper' zDepth={3} key={country.name}>
+                                        <div className='b-country'>{country.name}</div>
+                                        <div>Population: {formatPopulation(country.population)}</div>
+                                    </Paper>
+                                )
+                            })
+                        }
+
+                    </div>
+
 
                 </div>
             </Tab>
