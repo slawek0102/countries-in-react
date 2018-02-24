@@ -82,7 +82,7 @@ export const PopulacjaSwiataComponent = (props) => {
                                     case 'both':
                                         return country;
                                     case 'north':
-                                        return country.latlng[0] > 0;
+                                        return country.latlng[0] >= 0;
                                     case 'south':
                                         return country.latlng[0] < 0;
                                 }
