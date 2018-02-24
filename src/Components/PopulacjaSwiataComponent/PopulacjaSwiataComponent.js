@@ -3,6 +3,8 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+
 import FontIcon from 'material-ui/FontIcon';
 import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
 
@@ -11,9 +13,9 @@ import './PopulacjaSwiatComponent.css';
 
 export const PopulacjaSwiataComponent = (props) => {
 
-    const {countries, sliderValue, handleSlider} = props;
+    const {countries, sliderValue, handleSlider, radioButtonGroupOnChange, radioButtonValue} = props;
 
-    console.log("PROPS:", sliderValue)
+    console.log("PROPS:", props)
 
     return (
 
@@ -40,7 +42,6 @@ export const PopulacjaSwiataComponent = (props) => {
 
             <Tab label="Countries & number of borders">
                 <div>
-
                     <p>Wyszukiwana liczba granic {sliderValue} i wiecej.</p>
 
                     <Slider
@@ -51,15 +52,41 @@ export const PopulacjaSwiataComponent = (props) => {
                         onChange={handleSlider}
                         className='b-slider'
                     />
+                    <p>Hemispheres</p>
+                    <RadioButtonGroup className='Hemispheres' name="Hemispheres" defaultSelected="both"
+                                      onChange={(e) => radioButtonGroupOnChange(e)}>
+
+                        <RadioButton
+                            className="Hemispheres__RadioButton"
+                            value="both"
+                            label="Both"
+                        />
+                        <RadioButton
+                            className="Hemispheres__RadioButton"
+                            value="north"
+                            label="North"
+                        />
+                        <RadioButton
+                            className="Hemispheres__RadioButton"
+                            value="south"
+                            label="South"
+                        />
+                    </RadioButtonGroup>
 
                     <div>
-
                         {
-                            countries.filter((country) => {
-                              if (country.borders.length >= sliderValue) {return country}
-
+                            countries.filter((country) =>
+                                country.borders.length >= sliderValue && country
+                            ).filter((country) => {
+                                switch (radioButtonValue) {
+                                    case 'both':
+                                        return country;
+                                    case 'north':
+                                        return country.latlng[0] > 0;
+                                    case 'south':
+                                        return country.latlng[0] < 0;
+                                }
                             }).map((country) => {
-                                console.log(country)
                                 return (
                                     <Paper className='b-paper' zDepth={3} key={country.name}>
                                         <div className='b-country'>{country.name}</div>
@@ -68,13 +95,9 @@ export const PopulacjaSwiataComponent = (props) => {
                                 )
                             })
                         }
-
                     </div>
-
-
                 </div>
             </Tab>
-
         </Tabs>
     )
 };
@@ -96,10 +119,10 @@ const formatPopulation = (population) => {
     }).reverse()
 };
 
-
 const totalPopulation = (countries) => {
-    return countries.map(country => country.population)
-        .reduce((a, b) => {
-            return a + b;
-        }, 0)
+    return countries.reduce((a, country) => {
+        return a + country.population;
+    }, 0)
 };
+
+

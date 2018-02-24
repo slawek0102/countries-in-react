@@ -17,7 +17,8 @@ export class MainComponent extends Component {
         this.state = {
             allCountries: [],
             sliderValue: 5,
-            selectedCountry: selectedCountry
+            selectedCountry: selectedCountry,
+            radioButtonValue: 'both'
         }
     }
 
@@ -52,7 +53,7 @@ export class MainComponent extends Component {
         }
     };
 
-    handleSlider = (e,newValue) =>{
+    handleSlider = (e, newValue) => {
 
         this.setState({
             sliderValue: newValue
@@ -78,21 +79,33 @@ export class MainComponent extends Component {
         )
     };
 
+    radioButtonGroupOnChange = (e) => {
+        e.preventDefault();
+        this.setState({
+            radioButtonValue: e.target.value
+        })
+    };
 
     render() {
         const {allCountries, sliderValue} = this.state;
         return (
             <div>
                 {/*<div>*/}
-                    {/*<Paper className='paper'>*/}
-                        {/*<SelectCountryComponent countries={allCountries}*/}
-                                                {/*handleUpdateInput={this.handleUpdateInput}*/}
-                        {/*/>*/}
-                    {/*</Paper>*/}
-                    {/*{this.state.selectedCountry.name && this.detailsToDisplay()}*/}
+                {/*<Paper className='paper'>*/}
+                {/*<SelectCountryComponent countries={allCountries}*/}
+                {/*handleUpdateInput={this.handleUpdateInput}*/}
+                {/*/>*/}
+                {/*</Paper>*/}
+                {/*{this.state.selectedCountry.name && this.detailsToDisplay()}*/}
                 {/*</div>*/}
                 <div>
-                    <PopulacjaSwiataComponent countries = {allCountries} sliderValue ={sliderValue} handleSlider = {this.handleSlider}/>
+                    <PopulacjaSwiataComponent
+                        countries={allCountries}
+                        sliderValue={sliderValue}
+                        handleSlider={this.handleSlider}
+                        radioButtonGroupOnChange={this.radioButtonGroupOnChange}
+                        radioButtonValue={this.state.radioButtonValue}
+                    />
                 </div>
             </div>
 
