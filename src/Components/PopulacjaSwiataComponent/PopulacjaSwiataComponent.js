@@ -6,6 +6,7 @@ import Slider from 'material-ui/Slider';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import {getDataFromAPI} from '../../utils/getDataFromAPI'
 
 import FontIcon from 'material-ui/FontIcon';
 import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
@@ -13,14 +14,12 @@ import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
 
 import './PopulacjaSwiatComponent.css';
 
+
 export const PopulacjaSwiataComponent = (props) => {
 
-    const {countries, sliderValue, handleSlider, radioButtonGroupOnChange, radioButtonValue, approvePopulationButton, populationOnInputText,population} = props;
-
-    console.log("Population:", population)
+    const {countries, sliderValue, handleSlider, radioButtonGroupOnChange, radioButtonValue, approvePopulationButton, populationOnInputText, population} = props;
 
     return (
-
         <Tabs>
             <Tab label="Total Population">
                 <div>
@@ -31,19 +30,21 @@ export const PopulacjaSwiataComponent = (props) => {
             </Tab>
             <Tab label="Population by Countries">
                 <div className='textField'>
-                    <TextField hintText='Enter population' onChange={(population)=>populationOnInputText(population.target.value)}/>
+                    <TextField hintText='Enter population'
+                               onChange={(population) => populationOnInputText(population.target.value)}/>
                 </div>
-
                 <div className='aprovePopulationButton'>
-                    <RaisedButton label="Approve" primary={true} onClick={()=>approvePopulationButton()}/>
+                    <RaisedButton label="Approve" primary={true} onClick={() => approvePopulationButton()}/>
                 </div>
 
                 <div>
-                    {countries.filter((country)=>{
-                      return (country.population > population *0.7 && country.population < population * 1.7)
+                    // TODO FLAGA
+                    {countries.filter((country) => {
+                        return (country.population > population * 0.7 && country.population < population * 1.3)
                     }).map((country) => {
                         return (
                             <Paper className='b-paper' zDepth={3} key={country.name}>
+                                <div>{country.flag}</div>
                                 <div className='b-country'>{country.name}</div>
                                 <div>Population: {formatPopulation(country.population)}</div>
                             </Paper>
@@ -51,7 +52,6 @@ export const PopulacjaSwiataComponent = (props) => {
                     })}
                 </div>
             </Tab>
-
             <Tab label="Countries & number of borders">
                 <div>
                     <p>Wyszukiwana liczba granic {sliderValue} i wiecej.</p>

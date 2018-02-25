@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Paper from 'material-ui/Paper';
 
 import './MainComponent.css'
-
+import axios from "axios/index";
 import {SelectedCountryDetailsComponent} from "../SelectedCountryDetailsComponent/SelectedCountryDetailsComponent";
 import {SelectCountryComponent} from '../SelectCountryComponent/SelectCountryComponent'
 import {getDataFromAPI} from '../../utils/getDataFromAPI'
@@ -122,6 +122,8 @@ export class MainComponent extends Component {
                         populationOnInputText = {this.populationOnInputText}
                     />
                 </div>
+
+
             </div>
 
         );
