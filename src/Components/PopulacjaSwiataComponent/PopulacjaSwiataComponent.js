@@ -4,6 +4,8 @@ import Paper from 'material-ui/Paper';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import FontIcon from 'material-ui/FontIcon';
 import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
@@ -13,23 +15,33 @@ import './PopulacjaSwiatComponent.css';
 
 export const PopulacjaSwiataComponent = (props) => {
 
-    const {countries, sliderValue, handleSlider, radioButtonGroupOnChange, radioButtonValue} = props;
+    const {countries, sliderValue, handleSlider, radioButtonGroupOnChange, radioButtonValue, approvePopulationButton, populationOnInputText,population} = props;
 
-    console.log("PROPS:", props)
+    console.log("Population:", population)
 
     return (
 
         <Tabs>
             <Tab label="Total Population">
-                < div>
+                <div>
                     <Paper className='b-paper b-country' zDepth={3}>
                         Total: {formatPopulation(totalPopulation(countries))}
                     </Paper>
                 </div>
             </Tab>
             <Tab label="Population by Countries">
+                <div className='textField'>
+                    <TextField hintText='Enter population' onChange={(population)=>populationOnInputText(population.target.value)}/>
+                </div>
+
+                <div className='aprovePopulationButton'>
+                    <RaisedButton label="Approve" primary={true} onClick={()=>approvePopulationButton()}/>
+                </div>
+
                 <div>
-                    {countries.map((country) => {
+                    {countries.filter((country)=>{
+                      return (country.population > population *0.7 && country.population < population * 1.7)
+                    }).map((country) => {
                         return (
                             <Paper className='b-paper' zDepth={3} key={country.name}>
                                 <div className='b-country'>{country.name}</div>
@@ -52,6 +64,7 @@ export const PopulacjaSwiataComponent = (props) => {
                         onChange={handleSlider}
                         className='b-slider'
                     />
+
                     <p>Hemispheres</p>
                     <RadioButtonGroup className='Hemispheres' name="Hemispheres" defaultSelected="both"
                                       onChange={(e) => radioButtonGroupOnChange(e)}>
@@ -72,6 +85,7 @@ export const PopulacjaSwiataComponent = (props) => {
                             label="South"
                         />
                     </RadioButtonGroup>
+
 
                     <div>
                         {

@@ -13,12 +13,14 @@ import {PopulacjaSwiataComponent} from "../PopulacjaSwiataComponent/PopulacjaSwi
 
 export class MainComponent extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             allCountries: [],
             sliderValue: 5,
             selectedCountry: selectedCountry,
-            radioButtonValue: 'both'
+            radioButtonValue: 'both',
+            population: 1000000
+
         }
     }
 
@@ -54,7 +56,6 @@ export class MainComponent extends Component {
     };
 
     handleSlider = (e, newValue) => {
-
         this.setState({
             sliderValue: newValue
         })
@@ -86,8 +87,19 @@ export class MainComponent extends Component {
         })
     };
 
+    approvePopulationButton = () =>{
+        console.log(Number(this.state.population))
+    };
+
+    populationOnInputText = (population)=>{
+        this.setState({
+            population: population
+        })
+    };
+
+
     render() {
-        const {allCountries, sliderValue} = this.state;
+        const {allCountries, sliderValue, population, radioButtonValue} = this.state;
         return (
             <div>
                 {/*<div>*/}
@@ -103,8 +115,11 @@ export class MainComponent extends Component {
                         countries={allCountries}
                         sliderValue={sliderValue}
                         handleSlider={this.handleSlider}
+                        population = {population}
                         radioButtonGroupOnChange={this.radioButtonGroupOnChange}
-                        radioButtonValue={this.state.radioButtonValue}
+                        radioButtonValue={radioButtonValue}
+                        approvePopulationButton = {this.approvePopulationButton}
+                        populationOnInputText = {this.populationOnInputText}
                     />
                 </div>
             </div>
