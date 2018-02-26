@@ -16,8 +16,8 @@ import './PopulacjaSwiatComponent.css';
 
 
 export const PopulacjaSwiataComponent = (props) => {
-
     const {countries, sliderValue, handleSlider, radioButtonGroupOnChange, radioButtonValue, approvePopulationButton, populationOnInputText, population} = props;
+
 
     return (
         <Tabs>
@@ -31,21 +31,17 @@ export const PopulacjaSwiataComponent = (props) => {
             <Tab label="Population by Countries">
                 <div className='textField'>
                     <TextField hintText='Enter population'
-                               onChange={(population) => populationOnInputText(population.target.value)}/>
+                               onChange={populationOnInputText}/>
                 </div>
                 <div className='aprovePopulationButton'>
-                    <RaisedButton label="Approve" primary={true} onClick={() => approvePopulationButton()}/>
+                    <RaisedButton label="Approve" primary={true} onClick={approvePopulationButton}/>
                 </div>
-
                 <div>
-                    // TODO FLAGA
-                    {countries.filter((country) => {
-                        return (country.population > population * 0.7 && country.population < population * 1.3)
-                    }).map((country) => {
+                    {countries.filter(country => country.population > population * 0.7 && country.population < population * 1.3
+                    ).map((country) => {
                         return (
                             <Paper className='b-paper' zDepth={3} key={country.name}>
-                                <div>{country.flag}</div>
-                                <div className='b-country'>{country.name}</div>
+                                <div className='b-country'><span><img src={country.flag} alt=""/></span>{country.name}</div>
                                 <div>Population: {formatPopulation(country.population)}</div>
                             </Paper>
                         )

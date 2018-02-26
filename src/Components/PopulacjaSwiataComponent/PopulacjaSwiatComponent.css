@@ -56,3 +56,9 @@ p{
     flex-direction: row;
     justify-content: center;
 }
+
+img{
+    width: 18px;
+    padding-right: 5px;
+    padding-bottom: 1px;
+}

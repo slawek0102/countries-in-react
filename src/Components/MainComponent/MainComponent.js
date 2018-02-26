@@ -91,9 +91,10 @@ export class MainComponent extends Component {
         console.log(Number(this.state.population))
     };
 
-    populationOnInputText = (population)=>{
+    populationOnInputText = (event)=>{
+        console.log(event)
         this.setState({
-            population: population
+            population: event.target.value
         })
     };
 
