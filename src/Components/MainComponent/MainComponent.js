@@ -19,7 +19,8 @@ export class MainComponent extends Component {
             sliderValue: 5,
             selectedCountry: selectedCountry,
             radioButtonValue: 'both',
-            population: 1000000
+            population: 0,
+            temp_population: 0
 
         }
     }
@@ -88,13 +89,15 @@ export class MainComponent extends Component {
     };
 
     approvePopulationButton = () =>{
-        console.log(Number(this.state.population))
+       this.setState({
+           population: this.state.temp_population
+       })
     };
 
     populationOnInputText = (event)=>{
-        console.log(event)
+       event.preventDefault()
         this.setState({
-            population: event.target.value
+           temp_population: event.target.value
         })
     };
 

@@ -17,8 +17,6 @@ import './PopulacjaSwiatComponent.css';
 
 export const PopulacjaSwiataComponent = (props) => {
     const {countries, sliderValue, handleSlider, radioButtonGroupOnChange, radioButtonValue, approvePopulationButton, populationOnInputText, population} = props;
-
-
     return (
         <Tabs>
             <Tab label="Total Population">
@@ -51,7 +49,6 @@ export const PopulacjaSwiataComponent = (props) => {
             <Tab label="Countries & number of borders">
                 <div>
                     <p>Wyszukiwana liczba granic {sliderValue} i wiecej.</p>
-
                     <Slider
                         min={0}
                         max={15}
@@ -64,7 +61,6 @@ export const PopulacjaSwiataComponent = (props) => {
                     <p>Hemispheres</p>
                     <RadioButtonGroup className='Hemispheres' name="Hemispheres" defaultSelected="both"
                                       onChange={(e) => radioButtonGroupOnChange(e)}>
-
                         <RadioButton
                             className="Hemispheres__RadioButton"
                             value="both"
@@ -115,9 +111,7 @@ export const PopulacjaSwiataComponent = (props) => {
 
 const formatPopulation = (population) => {
     let counter = 0;
-
     const reversedStringPopulationArray = population.toString().split("").reverse();
-
     return reversedStringPopulationArray.map((digit) => {
         counter++;
         if (counter > 3) {
