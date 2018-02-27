@@ -77,8 +77,6 @@ export const PopulacjaSwiataComponent = (props) => {
                             label="South"
                         />
                     </RadioButtonGroup>
-
-
                     <div>
                         {
                             countries.filter((country) =>

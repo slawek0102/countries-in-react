@@ -60,7 +60,7 @@ export class MainComponent extends Component {
         this.setState({
             sliderValue: newValue
         })
-    }
+    };
 
     detailsToDisplay = () => {
         const {selectedCountry} = this.state;
@@ -95,7 +95,7 @@ export class MainComponent extends Component {
     };
 
     populationOnInputText = (event)=>{
-       event.preventDefault()
+       event.preventDefault();
         this.setState({
            temp_population: event.target.value
         })
